@@ -81,11 +81,11 @@ export default class EslintTask implements Disposable {
   }
   public async getOptions(): Promise<TaskOptions> {
     let root = Uri.parse(workspace.workspaceFolder.uri).fsPath
-    let cmd = await findEslint(root)
+    // let cmd = await findEslint(root)
     let config = workspace.getConfiguration('eslint')
     let args = config.get<string[]>('lintTask.options', ['.'])
     return {
-      cmd,
+      'yarn lint',
       args: args.concat(['-f', 'unix', '--no-color']),
       cwd: root
     }
